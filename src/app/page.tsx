@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { names } from "@/lib/popolate";
+// import { names } from "@/lib/popolate";
 import { db } from "@/lib/db";
-import { countTodos, getTodos } from "@/lib/dbUtils";
+import { countTodos } from "@/lib/dbUtils";
 import SearchBar from "@/components/SearchBar";
 import TodosList from "@/components/TodosList";
+import { faker } from "@faker-js/faker";
 
 type RecType = {
   title: string;
@@ -11,7 +12,12 @@ type RecType = {
 };
 const populateList = async () => {
   let list: RecType[] = [];
-  names.map((name) => list.push({ title: name, complete: false }));
+  for (let i = 0; i < 200; i++) {
+    list.push({
+      title: faker.word.words({ count: { min: 1, max: 4 } }),
+      complete: false,
+    });
+  }
 
   await db.todo.createMany({
     data: list,
@@ -28,13 +34,7 @@ type SearchParamsProps = {
 };
 
 export default async function Home({ searchParams }: SearchParamsProps) {
-  // let todos = await getTodos("ad","active");
-  // console.log(todos)
-
-  // console.log(populateList())
-  // console.log(populateList())
-  // console.log(populateList())
-  // console.log(populateList())
+  // console.log(await populateList())
   return (
     <>
       <header className="flex gap-5 justify-between items-center mb-4">

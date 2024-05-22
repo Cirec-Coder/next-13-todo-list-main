@@ -27,6 +27,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "daisyui": "^4.11.1",
     "prisma": "^5.12.1"
   }
