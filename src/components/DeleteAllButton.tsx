@@ -17,7 +17,10 @@ const DeleteAllButton = () => {
         }}
         className="btn btn-outline  btn-error sm:btn-sm btn-xs"
       >
-        <Trash2Icon width="1.2em" height="1.2em" />
+        <Trash2Icon
+          width="1.2em"
+          height="1.2em"
+        />
         <span className="hidden sm:block">Delete All</span>
       </button>
       <dialog
@@ -34,14 +37,16 @@ const DeleteAllButton = () => {
             {/* if there is a button in form, it will close the modal */}
             <button
               type="button"
-              onClick={() => {
+              onClick={async () => {
                 const elem = document.getElementById(
                   "my_modal_1"
                 ) as HTMLDialogElement;
                 elem?.close();
-                deleteAll();
-                router.refresh();
-              }}
+              deleteAll().then(() => {
+                  router.push("/");
+                  window.location.replace("/")
+                })
+                       }}
               className="btn btn-error mb-4"
             >
               Yes

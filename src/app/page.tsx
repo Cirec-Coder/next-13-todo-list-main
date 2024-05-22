@@ -4,27 +4,7 @@ import { db } from "@/lib/db";
 import { countTodos } from "@/lib/dbUtils";
 import SearchBar from "@/components/SearchBar";
 import TodosList from "@/components/TodosList";
-import { faker } from "@faker-js/faker";
-
-type RecType = {
-  title: string;
-  complete: boolean;
-};
-const populateList = async () => {
-  let list: RecType[] = [];
-  for (let i = 0; i < 200; i++) {
-    list.push({
-      title: faker.word.words({ count: { min: 1, max: 4 } }),
-      complete: false,
-    });
-  }
-
-  await db.todo.createMany({
-    data: list,
-  });
-
-  return list;
-};
+import Populate from "@/components/Populate";
 
 type SearchParamsProps = {
   searchParams: {
@@ -35,6 +15,9 @@ type SearchParamsProps = {
 
 export default async function Home({ searchParams }: SearchParamsProps) {
   // console.log(await populateList())
+  // await populateList()
+  const count = await countTodos()
+  
   return (
     <>
       <header className="flex gap-5 justify-between items-center mb-4">
@@ -50,6 +33,7 @@ export default async function Home({ searchParams }: SearchParamsProps) {
         </Link>
       </header>
       <main>
+        {count === 0 && <Populate/> }
         <TodosList
         //  {/* searchParams={searchParams} */}
         />

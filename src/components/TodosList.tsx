@@ -18,11 +18,12 @@ const TodosList = () => {
   const filter = searchParams.get("filter") || "all";
   const page = Number(searchParams.get("page")) || 1;
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [pageCount, setPageCount] = useState(0);
+  const [pageCount, setPageCount] = useState(-1);
 
-  if (page > pageCount || page < 1) {
+  if (pageCount > -1 && (page > pageCount || page < 1)) {
     const param = new URLSearchParams(searchParams);
     param.set("page", "1");
+    // param.set("filter", filter);
     router.replace(`${pathname}?${param.toString()}`);
   }
 
@@ -39,18 +40,26 @@ const TodosList = () => {
     }
   }, [search, filter, page]);
 
-  const FilterButtons = FILTER_NAMES.map((name, index) => (
-    <FilterButton
-      key={index}
-      name={name}
-      filter={filter}
-    />
-  ));
+  // const FilterButtons = FILTER_NAMES.map((name, index) => (
+  //   <FilterButton
+  //     key={index}
+  //     name={name}
+  //     filter={filter}
+  //   />
+  // ));
 
   return (
     <>
       <div className="flex justify-between mt-10 ">
-        <div>{FilterButtons}</div>
+        <div>
+          {FILTER_NAMES.map((name, index) => (
+            <FilterButton
+              key={index}
+              name={name}
+              filter={filter}
+            />
+          ))}
+        </div>
         <DeleteAllButton />
       </div>
       <div className="mt-5 max-h-3/4">

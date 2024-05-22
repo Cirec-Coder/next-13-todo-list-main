@@ -26,7 +26,7 @@ const FilterButton = ({ name, filter }: FilterButtonProps) => {
         aria-label={capitalize(name)}
         key={name}
         id={name}
-        defaultChecked={filter == name}
+        defaultChecked={filter === name}
         onClick={() => {
           setFilter(name);
         }}
