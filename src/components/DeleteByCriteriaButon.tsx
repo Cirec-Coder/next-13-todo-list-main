@@ -75,8 +75,8 @@ const getFilterIcon = (filter: string): ReactElement => {
           className="sm:hidden"
         />
       );
+      default : return <></>; 
   }
-  return <></>;
 };
 
 const DeleteByCriteriaButton = () => {
