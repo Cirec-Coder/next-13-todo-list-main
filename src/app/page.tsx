@@ -1,5 +1,4 @@
 import Link from "next/link";
-// import { names } from "@/lib/popolate";
 import { db } from "@/lib/db";
 import { countTodos } from "@/lib/dbUtils";
 import SearchBar from "@/components/SearchBar";
@@ -14,8 +13,6 @@ type SearchParamsProps = {
 };
 
 export default async function Home({ searchParams }: SearchParamsProps) {
-  // console.log(await populateList())
-  // await populateList()
   const count = await countTodos()
   
   return (
@@ -35,7 +32,6 @@ export default async function Home({ searchParams }: SearchParamsProps) {
       <main>
         {count === 0 && <Populate/> }
         <TodosList
-        //  {/* searchParams={searchParams} */}
         />
       </main>
     </>
