@@ -22,7 +22,7 @@ export function capitalize(str: string): string {
   return str
     .split("")
     .map((letter, idx) => {
-      if (idx == 0) return letter.charCodeAt(0) ^ 32;
+      if (idx == 0) return (letter.charCodeAt(0) | 32) ^ 32;
       else return letter.charCodeAt(0) | 32;
     })
     .map((num) => String.fromCharCode(num))
