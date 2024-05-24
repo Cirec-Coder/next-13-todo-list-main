@@ -6,6 +6,8 @@
     <li><b>C</b>reate <b>R</b>ead <b>U</b>pdate <b>D</b>elete Todos</li>
     <li>Dynamic search bar</li>
     <li>Filtering by status [All, Active, Completed]</li>
+    <li>Pagination</li>
+    <li>Delete button according search criteria</li>
 </ul>
 
 <img src="./public/todos-1.jpg">
