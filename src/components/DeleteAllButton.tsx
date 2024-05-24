@@ -15,13 +15,14 @@ const DeleteAllButton = () => {
         onClick={() => {
           openModal();
         }}
-        className="btn btn-outline  btn-error sm:btn-sm btn-xs"
+        title="Delete the entire database"
+        className="btn  btn-error sm:btn-sm btn-xs"
       >
         <Trash2Icon
           width="1.2em"
           height="1.2em"
         />
-        <span className="hidden sm:block">Delete All</span>
+        {/* <span className="hidden sm:block">Delete All</span> */}
       </button>
       <dialog
         id="my_modal_1"

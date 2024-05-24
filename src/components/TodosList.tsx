@@ -7,6 +7,7 @@ import { TodoItem } from "./TodoItem";
 import DeleteAllButton from "./DeleteAllButton";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Pagination from "./Pagination";
+import DeleteByCriteriaButton from "./DeleteByCriteriaButon";
 
 const FILTER_NAMES = ["all", "active", "completed"];
 
@@ -51,7 +52,7 @@ const TodosList = () => {
   return (
     <>
       <div className="flex justify-between mt-10 ">
-        <div>
+        <div className="flex">
           {FILTER_NAMES.map((name, index) => (
             <FilterButton
               key={index}
@@ -59,6 +60,7 @@ const TodosList = () => {
               filter={filter}
             />
           ))}
+          <DeleteByCriteriaButton />
         </div>
         <DeleteAllButton />
       </div>
